@@ -7,8 +7,9 @@ public class Projectile : MonoBehaviour
 {
     private Movement2D movement2D;
     private Transform target;
+    private int damage;
 
-    public void SetUp(Transform target)
+    public void SetUp(Transform target,int damage)
     {
         movement2D = GetComponent<Movement2D>();
     
@@ -19,6 +20,7 @@ public class Projectile : MonoBehaviour
         }
     
         this.target = target; //타워가 설정해준 타겟
+        this.damage = damage; //타워가 설정해준 공격력 
     }
 
 
@@ -45,7 +47,8 @@ public class Projectile : MonoBehaviour
         Enemy enemy = collision.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.OnDie(); // 적 사망 함수 호출
+           // enemy.OnDie(); // 적 사망 함수 호출
+           collision.GetComponent<EnemyHp>().TakeDamage(damage);//적 체력을 damage만큼 감소 
         }
         else
         {

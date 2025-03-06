@@ -9,7 +9,8 @@ public class EnemySpawner : MonoBehaviour
    [SerializeField] private Transform canvasTransform; //UI를 표현하는 Canvas오브젝트의 Transform.
    [SerializeField] private float spawnTime; // 적 생성 주기
    [SerializeField] private Transform[] waypoints; // 현재 스테이지의 이동 경로
-   [SerializeField] private PlayerHP playerHp; //플레이어의 체력 컴포넌트  
+   [SerializeField] private PlayerHP playerHp; //플레이어의 체력 컴포넌트 
+   [SerializeField] private PlayerGold playerGold; //플레이어의 골드 컴포넌트 
    private List<Enemy> enemyList;  //현재 맵에 존재하는 모든 적의 정보
    
    //적의 생성과 삭제는 EnemySpawner에서 하기 때문에 Set은 필요 없다.
@@ -39,13 +40,19 @@ public class EnemySpawner : MonoBehaviour
    }
 
    
-   public void DestroyEnemy(EnemyDestroyType type, Enemy enemy)
+   public void DestroyEnemy(EnemyDestroyType type, Enemy enemy,int gold)
    {
       //적이 목표지점까지 도착했을 떄
       if (type == EnemyDestroyType.Arrive)
       {
          //플레이어의 체력 -1
          playerHp.TakeDamage(1);
+      }
+      //적이 플레이어의 발사체에 사망했을 떄
+      else if (type == EnemyDestroyType.Kill)
+      {
+         //적의 종류에 따라 사망 시 골드 획득 
+         playerGold.CurrentGold += gold;
       }
       //리스트에서 사망하는 적 정보 삭제
       enemyList.Remove(enemy);

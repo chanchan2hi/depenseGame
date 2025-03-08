@@ -106,7 +106,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0be49e82cf8e3624bbbe05ac91d04802, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,11 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c72c42bf597294ea0230ecd6e4ea2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerTemplate: {fileID: 11400000, guid: 235eec2ba5ca90f4dbde8501b117964b, type: 2}
   projectilePrefab: {fileID: 1110459479759350475, guid: 11544d4a9faa42a4cbdec30bb0c6ade6, type: 3}
   spawnPoint: {fileID: 8352835707058752129}
-  attackRate: 0.5
-  attackRange: 2
-  attackDamage: 1
 --- !u!65 &-6576572243247476142
 BoxCollider:
   m_ObjectHideFlags: 0
